@@ -3,9 +3,6 @@ import Task from './Task';
 
 
 class TaskList extends Component {
-  componentDidUpdate() {
-    console.log(this.props.tasks);
-  }
   render() {
     return (
       <div>

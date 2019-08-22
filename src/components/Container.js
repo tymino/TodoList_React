@@ -15,25 +15,28 @@ class Container extends React.Component {
     
     this.state = {
       value: '',
-      tasks: [
-        {
-          id: '0adsda',
-          value: 'Купить хлеба',
+      tasks: JSON.parse(localStorage.getItem('todo')) || [{
+          id: '007',
+          value: 'Добавить новую задачу',
           isDone: false
-        }
-      ],
+      }]
     };
+  }
+  // Update Local Storage
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem('todo', JSON.stringify(this.state.tasks));
   }
 
   addTask() {
+    // Пустая ли строка
     if (!this.state.value) { return; }
 
     const newListTasks = this.state.tasks;
     this.setState({
       tasks: newListTasks.concat([
         {
-          id: this.state.value.toString(),
-          value: this.state.value.toString(),
+          id: (() => Math.random().toString(36).substr(2, 9))(),
+          value: this.state.value.trim(),
           isDone: false
         }
       ]),
@@ -57,12 +60,15 @@ class Container extends React.Component {
   }
 
   handleInput(e) {
+    let locValue = e.target.value.replace(/^\s/, '').replace(/\s+/g, ' ');
+
     this.setState({
-      value: e.target.value
+      value: locValue
     });
   }
 
   render() {
+    console.log('Container');
     return (
       <div>
         <InputField

@@ -2,12 +2,6 @@ import React, {Component} from 'react';
 
 
 class Task extends Component {
-  componentDidUpdate() {
-    console.log(this.props.tasks);
-  }
-  componentWillUnmount() {
-    console.log('Delete ' + this);
-  }
   render() {
     return (
       <div>
