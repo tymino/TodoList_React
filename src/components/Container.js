@@ -1,5 +1,5 @@
 import React from 'react';
-//import './App.css';
+import './css/Container.css';
 
 import InputField from './InputField';
 import TaskList from './TaskList';
@@ -30,6 +30,10 @@ class Container extends React.Component {
   addTask() {
     // Пустая ли строка
     if (!this.state.value) { return; }
+    if (this.state.tasks.length >= 20) {
+      this.setState({ value: 'Достигнут лимит задач'});
+      return;
+    }
 
     const newListTasks = this.state.tasks;
     this.setState({
@@ -47,7 +51,8 @@ class Container extends React.Component {
     let localList = this.state.tasks.slice();
     localList.splice(index, 1);
     this.setState({
-      tasks: localList
+      tasks: localList,
+      value: ''
     });
   }
   isDoneTask(index) {
@@ -70,7 +75,7 @@ class Container extends React.Component {
   render() {
     console.log('Container');
     return (
-      <div>
+      <div className="container">
         <InputField
           value={this.state.value}
           handleInput={this.handleInput}

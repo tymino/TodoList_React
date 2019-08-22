@@ -1,29 +1,27 @@
 import React, {Component} from 'react';
+import './css/Task.css';
 
 
 class Task extends Component {
   render() {
     return (
-      <div>
-        <p style={myStyle}>{this.props.index}</p>
-        <p style={myStyle}>{this.props.task.value}</p>
+      <div className="task">
+        <div className="wrapper">
+          <p className="index">{`${this.props.index}/20`}</p>
+          <button
+            className="btn-done"
+            onClick={this.props.onDone}
+          >
+          </button>
+        </div>
+        <p className={(this.props.task.isDone === true) ? 'value task-complete' : 'value'}>{this.props.task.value}</p>
         <button
-          onClick={this.props.onDone}
-        >
-          Done
-        </button>
-        <button
+          className="btn-delete"
           onClick={this.props.onDelete}
         >
-          X
         </button>
       </div>
     );
   }
 }
 export default Task;
-
-const myStyle = {
-  display: "inline",
-  margin: 3
-}

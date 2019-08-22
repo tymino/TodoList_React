@@ -5,7 +5,7 @@ import Task from './Task';
 class TaskList extends Component {
   render() {
     return (
-      <div>
+      <div className="tasklist">
         {this.props.tasks.map((task, index) => {
           return (
             <Task
