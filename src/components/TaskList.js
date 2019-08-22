@@ -1,0 +1,27 @@
+import React, {Component} from 'react';
+import Task from './Task';
+
+
+class TaskList extends Component {
+  componentDidUpdate() {
+    console.log(this.props.tasks);
+  }
+  render() {
+    return (
+      <div>
+        {this.props.tasks.map((task, index) => {
+          return (
+            <Task
+              key={task.id}
+              task={task}
+              index={index + 1}
+              onDelete={() => this.props.removeTask(index)}
+              onDone={() => this.props.isDoneTask(index)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+}
+export default TaskList;
