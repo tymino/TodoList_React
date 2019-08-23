@@ -9,14 +9,14 @@ class Task extends Component {
         <div className="wrapper">
           <p className="index">{`${this.props.index}/20`}</p>
           <button
-            className="btn-done"
+            className={(this.props.task.isDone === true) ? 'btn-done btn-done-complete' : 'btn-done'}
             onClick={this.props.onDone}
           >
           </button>
         </div>
         <p className={(this.props.task.isDone === true) ? 'value task-complete' : 'value'}>{this.props.task.value}</p>
         <button
-          className="btn-delete"
+          className={(this.props.task.isDone === true) ? 'btn-delete btn-delete-complete' : 'btn-delete'}
           onClick={this.props.onDelete}
         >
         </button>
