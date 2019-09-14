@@ -28,7 +28,7 @@ class Container extends React.Component {
   }
 
   addTask() {
-    // Пустая ли строка
+    // input.value === '' ???
     if (!this.state.value) { return; }
     if (this.state.tasks.length >= 20) {
       this.setState({ value: 'Достигнут лимит задач'});
@@ -73,7 +73,6 @@ class Container extends React.Component {
   }
 
   render() {
-    console.log('Container');
     return (
       <div className="container">
         <InputField
