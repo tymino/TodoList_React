@@ -1,27 +1,27 @@
-import React, {Component} from 'react';
-import './css/Task.css';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import '../styles/Task.css';
 
+import React from 'react';
 
-class Task extends Component {
-  render() {
-    return (
-      <div className="task">
-        <div className="wrapper">
-          <p className="index">{`${this.props.index}/20`}</p>
-          <button
-            className={(this.props.task.isDone === true) ? 'btn-done btn-done-complete' : 'btn-done'}
-            onClick={this.props.onDone}
-          >
-          </button>
-        </div>
-        <p className={(this.props.task.isDone === true) ? 'value task-complete' : 'value'}>{this.props.task.value}</p>
+const Task = ({ task, doneTask, removeTask, index }) => {
+  return (
+    <div className="task">
+      <div className="wrapper">
+        <p className="index">{`${index + 1}/20`}</p>
         <button
-          className={(this.props.task.isDone === true) ? 'btn-delete btn-delete-complete' : 'btn-delete'}
-          onClick={this.props.onDelete}
-        >
-        </button>
+          className={task.isDone === true ? 'btn-done btn-done-complete' : 'btn-done'}
+          onClick={doneTask}
+          type="button"
+        />
       </div>
-    );
-  }
-}
+      <p className={task.isDone === true ? 'value task-complete' : 'value'}>{task.value}</p>
+      <button
+        className={task.isDone === true ? 'btn-delete btn-delete-complete' : 'btn-delete'}
+        onClick={removeTask}
+        type="button"
+      />
+    </div>
+  );
+};
+
 export default Task;
