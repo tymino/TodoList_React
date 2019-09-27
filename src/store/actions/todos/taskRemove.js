@@ -6,7 +6,7 @@ const removeTaskAction = taskID => dispatch => {
 
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   axios
-    .delete(`http://localhost:5555/${taskID}`)
+    .delete(`https://my-react-redux-todos-server.herokuapp.com/${taskID}`)
     .then(response => {
       dispatch({
         type: 'TASK_GET',

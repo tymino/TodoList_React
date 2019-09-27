@@ -6,7 +6,7 @@ const doneTaskAction = task => dispatch => {
   
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   axios
-    .put(`http://localhost:5555/${task._id}`, { ...task, isEnd: !task.isEnd })
+    .put(`https://my-react-redux-todos-server.herokuapp.com/${task._id}`, { ...task, isEnd: !task.isEnd })
     .then(response => {
       dispatch({
         type: 'TASK_DONE',

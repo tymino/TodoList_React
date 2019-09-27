@@ -4,7 +4,7 @@ import { setToken } from '../../../helpers/token';
 const signupSubmit = signupData => dispatch => {
 
   axios
-    .post('http://localhost:5555/signup', signupData)
+    .post('https://my-react-redux-todos-server.herokuapp.com/signup', signupData)
     .then(response => {
       dispatch({
         type: 'SIGNUP_SUBMIT',

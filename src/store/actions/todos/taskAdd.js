@@ -7,7 +7,7 @@ const taskAdd = taskText => dispatch => {
   
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   axios
-    .post('http://localhost:5555/addtask', {
+    .post('https://my-react-redux-todos-server.herokuapp.com/addtask', {
       text: taskText,
       color: randColor()
     })

@@ -46,3 +46,16 @@
 
   color: $whiteColor
   text-align: center
+
+//Media
+@media all and ( max-width: 420px )
+  .auth__label
+    flex-direction: column
+    align-items: flex-start
+    .auth__input
+      margin-top: 3px
+
+@media all and ( max-width: 315px )
+  .auth__label
+    .auth__input
+      width: 200px

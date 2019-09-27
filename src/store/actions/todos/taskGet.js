@@ -6,7 +6,7 @@ const taskGet = () => dispatch => {
 
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   axios
-    .get('http://localhost:5555/')
+    .get('https://my-react-redux-todos-server.herokuapp.com/')
     .then(response => {
       if (response.data.error === 'Token expired!') {
         return;
