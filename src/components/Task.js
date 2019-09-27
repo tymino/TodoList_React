@@ -1,25 +1,29 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import '../styles/Task.css';
-
 import React from 'react';
 
-const Task = ({ task, doneTask, removeTask, index }) => {
+const Task = ({ task, doneTask, removeTask}) => {
   return (
-    <div className="task">
-      <div className="wrapper">
-        <p className="index">{`${index + 1}/20`}</p>
-        <button
-          className={task.isDone === true ? 'btn-done btn-done-complete' : 'btn-done'}
-          onClick={doneTask}
+    <div className={task.isEnd !== true ? `task__container ${task.color}Color` : 'task__container greyLightenColor'}>
+      <div className="task__header-wrapper">
+        <div className="wrapper__btn--done">
+          <input
+            className={task.isEnd === true ?
+              "task__btn--done complete" :
+              "task__btn--done"}
+            onClick={doneTask}
+            type="button"
+          />
+          {task.isEnd === true ?
+            <p className="task__complete">Выполнено!</p> :
+            <p>{null}</p>}
+        </div>
+        <input
+          className="task__btn--delete"
+          onClick={removeTask}
           type="button"
         />
       </div>
-      <p className={task.isDone === true ? 'value task-complete' : 'value'}>{task.value}</p>
-      <button
-        className={task.isDone === true ? 'btn-delete btn-delete-complete' : 'btn-delete'}
-        onClick={removeTask}
-        type="button"
-      />
+      <p className={task.isEnd === true ? 'task__text' : ''}>{task.text}</p>
     </div>
   );
 };

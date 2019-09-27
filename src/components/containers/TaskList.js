@@ -1,46 +1,51 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
 import Task from '../Task';
 
-import { getTasksAction, doneTaskAction, removeTaskAction } from '../../store/actions';
+import { taskGet, taskDone, taskRemove } from '../../store/actions';
 
-const TaskList = ({ tasks, doneTask, removeTask }) => {
-  useEffect(() => 
-    localStorage.setItem('localTasks', JSON.stringify(tasks))
-  );
+const TaskList = ({ tasks, isAuth, getTasks, doneTask, removeTask }) => {
+  useEffect(() => getTasks(), []);
 
   return (
-    <div className="tasklist">
-      {tasks.map((task, index) => {
-        return (
-          <Task
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            task={task}
-            index={index}
-            doneTask={() => doneTask(index)}
-            removeTask={() => removeTask(index)}
-          />
-        );
-      })}
+    <div className="tasklist__container">
+      {isAuth === true ? (
+        tasks.map((task, index) => {
+          return (
+            <Task
+              key={task._id}
+              task={task}
+              index={index}
+              doneTask={() => doneTask(task)}
+              removeTask={() => removeTask(task._id)}
+            />
+          );
+        })
+      ) : (
+        <Redirect to="/" />
+      )}
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  tasks: state.tasksReducer.tasks
+  tasks: state.tasks,
+  token: state.token,
+  isAuth: state.isAuth
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     getTasks: () => {
-      dispatch(getTasksAction());
+      dispatch(taskGet());
     },
-    doneTask: index => {
-      dispatch(doneTaskAction(index));
+    doneTask: task => {
+      dispatch(taskDone(task));
     },
-    removeTask: index => {
-      dispatch(removeTaskAction(index));
+    removeTask: taskID => {
+      dispatch(taskRemove(taskID));
     }
   };
 };

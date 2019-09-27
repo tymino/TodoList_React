@@ -1,0 +1,54 @@
+@import variables
+
+body
+  display: flex
+  justify-content: center
+  background-color: #1F8A4C
+  font-family: 'Roboto', sans-serif
+
+
+.link
+  color: $greyColor
+
+.main__container
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  width: 100vw
+  max-width: 1000px
+
+
+.todos__container
+  display: flex
+  flex-direction: column
+
+  min-width: 700px
+  padding: 15px 20px
+  margin-top: 5px
+
+  border-radius: $borderRadius
+  background-color: $greyLightenColor
+
+.tasklist__container
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+
+  margin-top: 20px
+
+// Imports
+@import auth
+@import todos
+@import task
+
+// Media 
+@media all and ( max-width: 775px )
+  .todos__container
+    min-width: 500px
+@media all and ( max-width: 570px )
+  .todos__container
+    min-width: 300px
+@media all and ( max-width: 360px )
+  .todos__container
+    min-width: 250px

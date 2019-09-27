@@ -1,5 +1,3 @@
-// import '../../styles/InputField.css';
-
 import React from 'react';
 
 const NotFound = () => {

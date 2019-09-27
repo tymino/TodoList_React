@@ -21,7 +21,7 @@ module.exports = merge(baseconfig, {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i, 
-        loader: "file-loader?name=img/[name].[ext]"
+        loader: "file-loader?name=images/[name].[ext]"
       }
     ]
   },

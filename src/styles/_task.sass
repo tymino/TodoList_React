@@ -1,0 +1,73 @@
+.task__container
+  width: 150px
+  height: 120px
+
+  margin: 5px
+  padding: 5px
+
+  word-wrap: break-word
+  overflow-y: auto
+  &::-webkit-scrollbar
+    display: none
+
+
+.task__header-wrapper
+  display: flex
+  justify-content: space-between
+
+  .wrapper__btn--done
+    display: flex
+    margin-bottom: 5px
+
+    .task__btn--done
+      height: 18px
+      width: 18px
+      margin-right: 2px
+
+      &:hover
+        transform: scale(1.2)
+
+      background: none
+      background-image: url(/images/done_gray.png)
+      background-size: contain
+      background-repeat: no-repeat
+
+      &.complete
+        background: none
+        background-image: url(/images/done_green.png)
+        background-size: contain
+        background-repeat: no-repeat
+
+    .task__complete
+      color: $btnNormalGreenColor
+
+
+  .task__btn--delete
+    height: 18px
+    width: 18px
+
+    background: none
+    background-image: url(/images/delete.png)
+    background-size: contain
+    background-repeat: no-repeat
+
+    &:hover
+      transform: scale(1.2)
+
+.task__text
+  text-decoration: line-through
+
+
+// colors Note
+.pinkColor
+  background-color: $pinkColor
+.yellowColor
+  background-color: $yellowColor
+.orangeColor
+  background-color: $orangeColor
+.blueColor
+  background-color: $blueColor
+.greenColor
+  background-color: $greenColor
+.greyLightenColor
+  background-color: $greyLightenColor
