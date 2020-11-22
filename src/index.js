@@ -1,4 +1,4 @@
-import 'normalize.css';
+// import 'normalize.css';
 import './styles/index.sass';
 
 import React from 'react';

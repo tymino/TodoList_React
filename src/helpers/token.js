@@ -1,4 +1,4 @@
-const nameKey = 'todos-token';
+const nameKey = 'todos-token-2.0';
 
 export const setToken = (token) => {
 	localStorage.setItem(nameKey, token);

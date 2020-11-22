@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { getToken } from '../../../helpers/token';
 
+import { serverName } from '../../../helpers/globalsVar';
+
+
 const taskGet = () => dispatch => {
   const token = getToken();
 
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  axios
-    .get('https://my-react-redux-todos-server.herokuapp.com/')
+  axios.get(`${serverName}`)
     .then(response => {
       if (response.data.error === 'Token expired!') {
         return;
@@ -16,8 +18,7 @@ const taskGet = () => dispatch => {
         type: 'TASK_GET',
         payload: response.data
       });
-    })
-    .catch(err => console.log(err));
+    }).catch(err => console.log(err));
 };
 
 export default taskGet;

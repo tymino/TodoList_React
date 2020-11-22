@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { setToken } from '../../../helpers/token';
 
+import { serverName } from '../../../helpers/globalsVar';
+
 
 const signinSubmit = signinData => dispatch => {
   axios
-    .post('https://my-react-redux-todos-server.herokuapp.com/signin', signinData)
+    .post(`${serverName}/signin`, signinData)
     .then(response => {
       dispatch({
         type: 'SIGNIN_SUBMIT',
